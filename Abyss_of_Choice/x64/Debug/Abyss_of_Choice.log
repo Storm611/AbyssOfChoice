@@ -1,0 +1,8 @@
+﻿  Abyss_of_Choice.cpp
+C:\Users\Admin\source\repos\Abyss_of_Choice\BattleEvent.h(57,29): warning C4244: =: преобразование "int" в "float", возможна потеря данных
+  (компиляция исходного файла "Abyss_of_Choice.cpp")
+  
+C:\Users\Admin\source\repos\Abyss_of_Choice\BattleEvent.h(60,57): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
+  (компиляция исходного файла "Abyss_of_Choice.cpp")
+  
+  Abyss_of_Choice.vcxproj -> C:\Users\Admin\source\repos\Abyss_of_Choice\x64\Debug\Abyss_of_Choice.exe
