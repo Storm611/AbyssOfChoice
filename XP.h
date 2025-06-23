@@ -1,38 +1,24 @@
-#pragma once
+#ifndef XP_H_
+#define XP_H_
+
+#include <fstream>
+#include <string>
+
 class XP {
 public:
-    XP() : experience(0), level(1) {}
+	XP();
 
-    void addExperience(int exp) {
-        experience += exp;
-    }
+	void addExperience(int exp);
+	bool checkLevelUp();
+	void levelUp();
+	int getLevel() const;
 
-    bool checkLevelUp() {
-
-
-        // Проверяем, достаточно ли опыта для повышения уровня
-        if (experience >= (level * 100)) {
-            return true; // Уровень можно повысить
-        }
-        return false; // Уровень нельзя повысить
-    }
-
-    void levelUp() {
-        // Увеличиваем уровень и сбрасываем необходимый опыт
-        int x = level; // Замедляем прогрессию от улучшение уровня
-        if (x > 10)
-        {
-
-            x = x + 7;
-
-        }
-        experience -= (x * 100);
-        level++;
-    }
-    int getLevel() const { return level; }
+	void saveToFile(std::ofstream& file) const;
+	void loadFromFile(std::ifstream& file);
 
 private:
-    int experience;
-    int level;
+	int experience;
+	int level;
 };
 
+#endif  // XP_H_

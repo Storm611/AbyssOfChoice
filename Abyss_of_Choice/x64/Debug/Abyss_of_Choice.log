@@ -1,17 +1,11 @@
 ﻿  Abyss_of_Choice.cpp
-C:\Users\flooky\source\repos\AbyssOfChoice\player.h(138,22): warning C4244: инициализация: преобразование "double" в "int", возможна потеря данных
+C:\Users\flooky\source\repos\AbyssOfChoice\battleevent.h(57,29): warning C4244: =: преобразование "int" в "float", возможна потеря данных
   (компиляция исходного файла "Abyss_of_Choice.cpp")
   
-C:\Users\flooky\source\repos\AbyssOfChoice\BattleEvent.h(57,29): warning C4244: =: преобразование "int" в "float", возможна потеря данных
-  (компиляция исходного файла "Abyss_of_Choice.cpp")
-  
-C:\Users\flooky\source\repos\AbyssOfChoice\BattleEvent.h(60,57): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
+C:\Users\flooky\source\repos\AbyssOfChoice\battleevent.h(60,57): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
   (компиляция исходного файла "Abyss_of_Choice.cpp")
   
   BattleEvent.cpp
-C:\Users\flooky\source\repos\AbyssOfChoice\Player.h(138,22): warning C4244: инициализация: преобразование "double" в "int", возможна потеря данных
-  (компиляция исходного файла "BattleEvent.cpp")
-  
 C:\Users\flooky\source\repos\AbyssOfChoice\BattleEvent.h(57,29): warning C4244: =: преобразование "int" в "float", возможна потеря данных
   (компиляция исходного файла "BattleEvent.cpp")
   
@@ -19,28 +13,18 @@ C:\Users\flooky\source\repos\AbyssOfChoice\BattleEvent.h(60,57): warning C4244: 
   (компиляция исходного файла "BattleEvent.cpp")
   
   level.cpp
-C:\Users\flooky\source\repos\AbyssOfChoice\Player.h(138,22): warning C4244: инициализация: преобразование "double" в "int", возможна потеря данных
+C:\Users\flooky\source\repos\AbyssOfChoice\battleevent.h(57,29): warning C4244: =: преобразование "int" в "float", возможна потеря данных
   (компиляция исходного файла "level.cpp")
   
-C:\Users\flooky\source\repos\AbyssOfChoice\BattleEvent.h(57,29): warning C4244: =: преобразование "int" в "float", возможна потеря данных
-  (компиляция исходного файла "level.cpp")
-  
-C:\Users\flooky\source\repos\AbyssOfChoice\BattleEvent.h(60,57): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
+C:\Users\flooky\source\repos\AbyssOfChoice\battleevent.h(60,57): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
   (компиляция исходного файла "level.cpp")
   
   LevelManager.cpp
-C:\Users\flooky\source\repos\AbyssOfChoice\Player.h(138,22): warning C4244: инициализация: преобразование "double" в "int", возможна потеря данных
+C:\Users\flooky\source\repos\AbyssOfChoice\battleevent.h(57,29): warning C4244: =: преобразование "int" в "float", возможна потеря данных
   (компиляция исходного файла "LevelManager.cpp")
   
-C:\Users\flooky\source\repos\AbyssOfChoice\BattleEvent.h(57,29): warning C4244: =: преобразование "int" в "float", возможна потеря данных
+C:\Users\flooky\source\repos\AbyssOfChoice\battleevent.h(60,57): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
   (компиляция исходного файла "LevelManager.cpp")
-  
-C:\Users\flooky\source\repos\AbyssOfChoice\BattleEvent.h(60,57): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
-  (компиляция исходного файла "LevelManager.cpp")
-  
-  Player.cpp
-C:\Users\flooky\source\repos\AbyssOfChoice\Player.h(138,22): warning C4244: инициализация: преобразование "double" в "int", возможна потеря данных
-  (компиляция исходного файла "Player.cpp")
   
   Создание кода...
   Abyss_of_Choice.vcxproj -> C:\Users\flooky\Source\Repos\AbyssOfChoice\x64\Debug\Abyss_of_Choice.exe

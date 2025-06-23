@@ -33,7 +33,7 @@ private:
 
         while (enemy.getHP() > 0 && player.getHP() > 0) {
             // Вывод текущего состояния
-            std::cout << "\nPlayer HP: " << player.getHP() << "/" << player.getMaxHp()
+            std::cout << "\nPlayer HP: " << player.getHP() << "/" << player.GetMaxHp()
                 << " | Enemy HP: " << enemy.getHP() << std::endl;
 
             // Меню выбора атаки
@@ -62,9 +62,9 @@ private:
 
                 break;
             case 3: // Использование зелья
-                if (player.useHealthPotion()) {
+                if (player.UseHealthPotion()) {
                     std::cout << "You used a health potion and recovered 40% of your max HP!\n";
-                    std::cout << "Current HP: " << player.getHP() << "/" << player.getMaxHp() << "\n";
+                    std::cout << "Current HP: " << player.getHP() << "/" << player.GetMaxHp() << "\n";
                 }
                 else {
                     std::cout << "You have no health potions left!\n";
@@ -94,8 +94,8 @@ private:
 
         // Награда за победу
         if (enemy.getHP() <= 0) {
-            player.gainExperience(enemy.getExperienceReward());
-            player.gainMoney(enemy.getMoneyReward());
+            player.GainExperience(enemy.getExperienceReward());
+            player.GainMoney(enemy.getMoneyReward());
             std::cout << "Gained " << enemy.getExperienceReward() << " XP and "
                 << enemy.getMoneyReward() << " gold!\n";
         }
