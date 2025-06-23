@@ -21,4 +21,4 @@ private:
 	int level;
 };
 
-#endif  // XP_H_
+#endif

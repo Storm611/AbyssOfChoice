@@ -1,4 +1,3 @@
-
 #ifndef RPG_GAME_PLAYER_INVENTORY_H_
 #define RPG_GAME_PLAYER_INVENTORY_H_
 
@@ -39,4 +38,4 @@ private:
     std::map<ItemType, ItemStats> equipped_items_;
 };
 
-#endif  // RPG_GAME_PLAYER_INVENTORY_H_
+#endif

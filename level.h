@@ -14,7 +14,7 @@ public:
         int reward_xp, int reward_money,
         const std::vector<std::string>& next_levels);
 
-    // Starts the level (returns true if player won)
+
     bool Start(Player& player);
 
     void MarkAsCompleted();
@@ -28,7 +28,7 @@ private:
     int reward_xp_;
     int reward_money_;
     bool is_completed_;
-    std::vector<std::string> next_levels_;  // Levels that unlock after this one
+    std::vector<std::string> next_levels_;  
 };
 
-#endif  // RPG_GAME_LEVEL_H_
+#endif 

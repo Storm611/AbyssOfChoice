@@ -1,5 +1,3 @@
-
-
 #ifndef RPG_GAME_PLAYER_H_
 #define RPG_GAME_PLAYER_H_
 
@@ -15,7 +13,7 @@ public:
     void GainExperience(int exp);
     int GetLevel() const;
     int GetMaxHp() const;
-    int GetHp() const;
+    int GetHp() const ;
     int GetBaseMaxHp() const;
     void Heal(int amount);
     bool UseHealthPotion();
@@ -54,4 +52,4 @@ private:
     int health_potion_;
 };
 
-#endif  // RPG_GAME_PLAYER_H_
+#endif

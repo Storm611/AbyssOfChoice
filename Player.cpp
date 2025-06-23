@@ -37,7 +37,7 @@ void Player::Heal(int amount) {
     if (HP > max_hp_) {
         HP = max_hp_;
     }
-    std::cout << "Healed for " << amount << " HP. Now: " << HP << "/" << max_hp_ << "\n";
+    
 }
 
 bool Player::UseHealthPotion() {
@@ -166,34 +166,37 @@ void Player::SaveGame() {
 }
 
 void Player::LoadGame() {
+    // Load player stats
     std::ifstream player_file("player.sav");
-    if (player_file) {
-        player_file >> level_
-            >> base_max_hp_
-            >> base_damage_
-            >> base_hard_damage_
-            >> base_defense_
-            >> money_
-            >> health_potion_
-            >> HP;
+    if (player_file.is_open()) {
+        if (!(player_file >> level_ >> base_max_hp_ >> base_damage_
+            >> base_hard_damage_ >> base_defense_
+            >> money_ >> health_potion_ >> HP)) {
+            std::cerr << "Error reading player data\n";
+        }
         player_file.close();
     }
+    else {
+        std::cerr << "Could not open player.sav for reading\n";
+    }
 
+    // Load inventory
     std::ifstream inv_file("inventory.sav");
-    if (inv_file) {
+    if (inv_file.is_open()) {
         inventory_.LoadFromFile(inv_file);
         inv_file.close();
     }
-
-    std::ifstream xp_file("xp.sav");
-    if (xp_file) {
-        xp_.loadFromFile(xp_file);
-        xp_file.close();
+    else {
+        std::cerr << "Could not open inventory.sav for reading\n";
     }
+
+    // Load XP
+    std::ifstream xp_file("xp.sav");
+    xp_.loadFromFile(xp_file);
+
 
     RecalculateStats();
 }
-
 void Player::LevelUp() {
     level_++;
     base_max_hp_ += 10 + level_;
@@ -224,7 +227,7 @@ void Player::RecalculateStats() {
     auto bonuses = inventory_.GetTotalBonuses();
     max_hp_ = base_max_hp_ + bonuses.hp_bonus;
 
-    Damage = base_damage_ + bonuses.damage_bonus;
+    Defense = base_damage_ + bonuses.damage_bonus;
     Hard_Damage = base_hard_damage_ + bonuses.hard_damage_bonus;
     Defense = base_defense_ + bonuses.defense_bonus;
     HP = std::min(HP, max_hp_);

@@ -1,33 +1,23 @@
-#pragma once
-#include "iostream"
+п»ї#ifndef ENEMY_H
+#define ENEMY_H
+
+#include <iostream>
 #include "Character.h"
 
 class Enemy : public Character {
 public:
-    Enemy(int hp, int damage, int hard_damage, int defense, int experienceReward, int moneyReward)
-        : Character(hp, damage, hard_damage, defense), experienceReward(experienceReward),moneyReward(moneyReward) {}
+    Enemy(int hp, int damage, int hard_damage, int defense, int experienceReward, int moneyReward);
 
-    void takeDamage(int damage) {
-        Character::takeDamage(damage);
-        if (getHP() <= 0) {
-            die();
-        }
-    }
+    void takeDamage(int damage);
 
-    int getExperienceReward() const {
-        return experienceReward;
-    }
-    int getMoneyReward() const {
-        return moneyReward;
-    }
-
+    int GetExperienceReward() const;
+    int GetMoneyReward() const;
 
 private:
-    void die() {
-        std::cout << "Enemy defeated! Rewarding " << experienceReward << " experience points." << std::endl;
-        // Здесь можно добавить логику для передачи опыта игроку
-    }
+    void die();
 
-    int experienceReward; // Количество опыта, которое дает враг
+    int experienceReward;
     int moneyReward;
 };
+
+#endif
