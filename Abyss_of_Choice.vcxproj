@@ -133,10 +133,11 @@
     <ClCompile Include="Enemy.cpp" />
     <ClCompile Include="Inventory.cpp" />
     <ClCompile Include="Item.cpp" />
-    <ClCompile Include="Levels.cpp" />
-    <ClCompile Include="MerchantInventory.cpp" />
+    <ClCompile Include="level.cpp" />
+    <ClCompile Include="LevelManager.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="PlayerInventory.cpp" />
+    <ClCompile Include="Shop.cpp" />
     <ClCompile Include="XP.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -145,10 +146,11 @@
     <ClInclude Include="Enemy.h" />
     <ClInclude Include="Inventory.h" />
     <ClInclude Include="Item.h" />
-    <ClInclude Include="Levels.h" />
-    <ClInclude Include="MerchantInventory.h" />
+    <ClInclude Include="level.h" />
+    <ClInclude Include="LevelManager.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="PlayerInventory.h" />
+    <ClInclude Include="Shop.h" />
     <ClInclude Include="XP.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

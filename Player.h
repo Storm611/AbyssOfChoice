@@ -4,14 +4,18 @@
 #include "PlayerInventory.h"
 #include <algorithm>
 #include <iostream>
-
+#include "Shop.h"
 class Player : public Character {
 public:
-    Player(int hp, int damage, int hard_damage, int defense,int health_potion)
+    Player(int hp, int damage, int hard_damage, int defense, int health_potion)
         : Character(hp, damage, hard_damage, defense),
-        level(1), max_hp(hp), money(0) {}
+        level(1), base_max_hp(hp), base_damage(damage),
+        base_hard_damage(hard_damage), base_defense(defense),
+        money(0), health_potion(health_potion) {
+        recalculateStats();
+    }
 
-    // —истема опыта и уровней
+    // —истема уровней
     void gainExperience(int exp) {
         xp.addExperience(exp);
         while (xp.checkLevelUp()) {
@@ -31,86 +35,120 @@ public:
             HP = max_hp;
         }
     }
+
     bool useHealthPotion() {
         if (health_potion > 0) {
-            int heal_amount = (getMaxHp() * 40) / 100; // 40% от максимального HP
+            int heal_amount = (getMaxHp() * 40) / 100;
             heal(heal_amount);
             health_potion--;
+            std::cout << "Used health potion. HP: " << HP << "/" << max_hp << "\n";
             return true;
         }
+        std::cout << "No health potions left!\n";
         return false;
     }
-
-
 
     // Ёкономика
     void gainMoney(int amount) {
         money += amount;
-        std::cout << "Player gained " << amount << " money. Total money: " << money << std::endl;
+        std::cout << "Obtained " << amount << " gold. Total: " << money << "\n";
     }
 
     int getMoney() const { return money; }
 
-    // ”лучшение характеристик
-    void improveArmor(int amount) {
-        Defense += amount;
-    }
-
-    // —истема инвентар€
-    void equipItem(Inventory::ItemType slot, const std::string& name,
+    // »нвентарь
+    void equipItem(PlayerInventory::ItemType slot, const std::string& name,
         int hp_bonus, int damage_bonus,
         int hard_damage_bonus, int defense_bonus) {
         unequipItem(slot);
-
-        Inventory::ItemStats newItem(name, hp_bonus, damage_bonus,
+        PlayerInventory::ItemStats newItem(name, hp_bonus, damage_bonus,
             hard_damage_bonus, defense_bonus);
         inventory.equipItem(slot, newItem);
         applyItemBonuses(newItem, true);
-
-        std::cout << "Equipped " << name << " (" << Inventory::slotToString(slot)
-            << ")" << std::endl;
+        std::cout << "Equipped " << name << " (" << PlayerInventory::slotToString(slot) << ")\n";
+        heal(getMaxHp());
     }
 
-    void unequipItem(Inventory::ItemType slot) {
+    void unequipItem(PlayerInventory::ItemType slot) {
         const auto& item = inventory.getItem(slot);
         if (item.name != "None") {
             applyItemBonuses(item, false);
             inventory.unequipItem(slot);
-            std::cout << "Unequipped " << item.name << std::endl;
+            std::cout << "Unequipped " << item.name << "\n";
         }
     }
 
     void showInventory() const {
+        std::cout << "\n=== INVENTORY ===\n";
+        std::cout << "Gold: " << money << "\n";
+        std::cout << "Health potions: " << health_potion << "\n\n";
         inventory.showInventory();
+
+        auto bonuses = inventory.getTotalBonuses();
+        std::cout << "\nTotal bonuses:\n";
+        std::cout << "HP: +" << bonuses.hp_bonus << "\n";
+        std::cout << "Damage: +" << bonuses.damage_bonus << "\n";
+        std::cout << "Heavy Damage: +" << bonuses.hard_damage_bonus << "\n";
+        std::cout << "Defense: +" << bonuses.defense_bonus << "\n";
     }
+
+    void showStats() const {
+        std::cout << "\n=== PLAYER STATS ===\n";
+        std::cout << "Level: " << level << "\n";
+        std::cout << "HP: " << HP << "/" << max_hp << "\n";
+        std::cout << "Damage: " << Damage << " (+" << Damage - base_damage << ")\n";
+        std::cout << "Heavy Damage: " << Hard_Damage << " (+" << Hard_Damage - base_hard_damage << ")\n";
+        std::cout << "Defense: " << Defense << " (+" << Defense - base_defense << ")\n";
+    }
+
+
+
+
 
 private:
-    void levelUp() {
-        level++;
-        max_hp += level;
-        HP += level;
-        Damage += level;
-        Hard_Damage += level;
-
-        std::cout << "Level up! Now you are level " << level
-            << ". HP: " << max_hp << ", Damage: " << Damage
-            << ", Hard Damage: " << Hard_Damage << std::endl;
-    }
-
-    void applyItemBonuses(const Inventory::ItemStats& item, bool equip) {
-        int modifier = equip ? 1 : -1;
-
-        max_hp += modifier * item.hp_bonus;
-        HP = std::min(HP, max_hp);
-        Damage += modifier * item.damage_bonus;
-        Hard_Damage += modifier * item.hard_damage_bonus;
-        Defense += modifier * item.defense_bonus;
-    }
-
-    Inventory inventory;
+    PlayerInventory inventory;
+    XP xp;
     int level;
     int max_hp;
-    XP xp;
+    int base_max_hp;
+    int base_damage;
+    int base_hard_damage;
+    int base_defense;
     int money;
     int health_potion;
+
+    void levelUp() {
+        level++;
+        base_max_hp += 10 + level;
+        base_damage += 2 + level / 2;
+        base_hard_damage += 3 + level / 2;
+        base_defense += 1 + level / 3;
+
+        recalculateStats();
+        HP = max_hp;
+
+        std::cout << "\nLEVEL UP! (" << level << ")\n";
+        std::cout << "HP: " << max_hp << " (+" << 10 + level << ")\n";
+        std::cout << "Damage: " << Damage << " (+" << 2 + level / 2 << ")\n";
+        std::cout << "Heavy Damage: " << Hard_Damage << " (+" << 3 + level / 2 << ")\n";
+        std::cout << "Defense: " << Defense << " (+" << 1 + level / 3 << ")\n";
+    }
+
+    void applyItemBonuses(const PlayerInventory::ItemStats& item, bool equip) {
+        int modifier = 0.5;
+        base_max_hp += modifier * item.hp_bonus;
+        base_damage += modifier * item.damage_bonus;
+        base_hard_damage += modifier * item.hard_damage_bonus;
+        base_defense += modifier * item.defense_bonus;
+        recalculateStats();
+    }
+
+    void recalculateStats() {
+        auto bonuses = inventory.getTotalBonuses();
+        max_hp = base_max_hp + bonuses.hp_bonus;
+        Damage = base_damage + bonuses.damage_bonus;
+        Hard_Damage = base_hard_damage + bonuses.hard_damage_bonus;
+        Defense = base_defense + bonuses.defense_bonus;
+        HP = std::min(HP, max_hp);
+    }
 };

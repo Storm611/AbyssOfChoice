@@ -1,5 +1,4 @@
-﻿// Abyss_of_Choice.cpp : Этот файл содержит функцию "main". Здесь начинается и заканчивается выполнение программы.
-//
+﻿
 
 #include <iostream>
 #include "XP.h"
@@ -9,38 +8,27 @@
 #include "BattleEvent.h"
 #include "PlayerInventory.h"
 #include "Inventory.h"
+#include "LevelManager.h"
+#include "Shop.h"
+
 
 
 int main() {
 
 
+    Player player(100, 10, 15, 5, 3);
+    // Экипируем предметы
+    player.equipItem(PlayerInventory::ItemType::HELMET,"Father_hat",1,0,0,1);
+    player.equipItem(PlayerInventory::ItemType::CHEST, "T-shirt", 5, 0, 0,3);
+    player.equipItem(PlayerInventory::ItemType::LEGS, "Pants", 5, 0, 0, 3);
+    player.equipItem(PlayerInventory::ItemType::WEAPON, "Pitchfork", 0, 4, 4, 0);
+    // Показываем инвентарь
+    player.showInventory();
 
-    Player player(100, 20,30, 5,2); 
-    player.equipItem(Inventory::SWORD,  "Dragon Slayer", 0, 0, 0, 0 );
-    player.equipItem(Inventory::HELMET,  "Iron Helmet", 0, 0, 0, 0 );
+    LevelManager levelManager;
 
 
-    BattleEvent event(player); // Создаем событие с игроком
+    levelManager.selectLevel(player);
 
-    // Добавляем врагов в событие
-    // std::cout << player.getHP() << std::endl;
-    event.addEnemy(Enemy(100, 15,25, 1, 100,100)); // Гоблин
-    // std::cout << player.getHP() << std::endl;
-    event.addEnemy(Enemy(80, 10,25, 2, 150,100)); // Орк
-    //std::cout << player.getHP() << std::endl;
-    event.addEnemy(Enemy(120, 10,25, 5, 200,100)); // Тролль
-
-    //std::cout << player.getHP() << std::endl;
-
-    // Начинаем событие
-    event.start();
-    player.heal(player.getMaxHp());
-    BattleEvent event2(player);
-    event2.addEnemy(Enemy(200, 15, 25, 1, 100, 100)); // Гоблин
-    event2.addEnemy(Enemy(280, 10, 25, 2, 150, 100)); // Орк
-    event2.addEnemy(Enemy(320, 10, 25, 5, 200, 100)); // Тролль
-
-    event2.start();
-    player.heal(player.getMaxHp());
     return 0;
 }
