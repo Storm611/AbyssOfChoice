@@ -4,7 +4,6 @@
 #include <chrono>
 #include <thread>
 
-
 void FinalCreditsEvent::ShowEndingChoice() {
     std::cout << "=== FINAL CHOICE ===\n";
     std::cout << "1. Destroy the Hellgate (Seal evil forever)\n";
@@ -35,8 +34,8 @@ void FinalCreditsEvent::GoodEnding() {
     std::cout << "The land begins to heal, and you're celebrated as the savior.\n";
     std::cout << "Though the scars of war remain, a new age of peace dawns.\n";
 
-    // Bonus for good ending
-    
+
+
     std::this_thread::sleep_for(std::chrono::seconds(10));
 }
 

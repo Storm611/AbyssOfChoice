@@ -1,0 +1,13 @@
+﻿  Abyss(project).cpp
+  BattleEvent.cpp
+C:\Users\Admin\source\repos\Abyss(project)\BattleEvent.cpp(44,25): warning C4244: =: преобразование "int" в "float", возможна потеря данных
+C:\Users\Admin\source\repos\Abyss(project)\BattleEvent.cpp(46,53): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
+  FinalCreditsEvent.cpp
+  Game.cpp
+  Level.cpp
+  LevelManager.cpp
+  Player.cpp
+C:\Users\Admin\source\repos\Abyss(project)\Player.cpp(218,18): warning C4244: инициализация: преобразование "double" в "int", возможна потеря данных
+  XP.cpp
+  Создание кода...
+  Abyss(project).vcxproj -> C:\Users\Admin\source\repos\Abyss(project)\x64\Debug\Abyss(project).exe

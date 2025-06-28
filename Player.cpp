@@ -37,7 +37,7 @@ void Player::Heal(int amount) {
     if (HP > max_hp_) {
         HP = max_hp_;
     }
-    
+
 }
 
 bool Player::UseHealthPotion() {

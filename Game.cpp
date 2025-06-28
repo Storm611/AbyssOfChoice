@@ -12,10 +12,10 @@
 Game::Game() :
     player_(100, 10, 15, 5, 3),
     game_running_(true) {
-    player_.EquipItem(PlayerInventory::ItemType::HELMET, "Father's Hat", 5000, 0, 100, 1);
-    player_.EquipItem(PlayerInventory::ItemType::CHEST, "T-shirt", 5, 0, 100, 0);
-    player_.EquipItem(PlayerInventory::ItemType::LEGS, "Pants", 5, 0, 200, 0);
-    player_.EquipItem(PlayerInventory::ItemType::WEAPON, "Pitchfork", 0, 4, 400, 0);
+    player_.EquipItem(PlayerInventory::ItemType::HELMET, "Father's Hat", 5, 0, 0, 1);
+    player_.EquipItem(PlayerInventory::ItemType::CHEST, "T-shirt", 5, 0, 0, 0);
+    player_.EquipItem(PlayerInventory::ItemType::LEGS, "Pants", 5, 0, 0, 0);
+    player_.EquipItem(PlayerInventory::ItemType::WEAPON, "Pitchfork", 0, 4, 4, 0);
 }
 
 void Game::Play() {

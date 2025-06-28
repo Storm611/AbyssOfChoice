@@ -18,11 +18,9 @@ public:
     void Heal(int amount);
     bool UseHealthPotion();
 
-    // Economy
     void GainMoney(int amount);
     int GetMoney() const;
 
-    // Inventory
     void EquipItem(PlayerInventory::ItemType slot, const std::string& name,
         int hp_bonus, int damage_bonus,
         int hard_damage_bonus, int defense_bonus);
